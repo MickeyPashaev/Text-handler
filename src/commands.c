@@ -35,7 +35,7 @@ int command_0(char ***ptr_sentences, int *ptr_count_sentences) {
     int new_count = 0;
     for (int i = 0; i < count_sentences; i++) {
         if (sentences[i]) {
-            new_sentences = realloc(new_sentences, sizeof(char **) * (new_count + 1));
+            new_sentences = realloc(new_sentences, sizeof(char *) * (new_count + 1));
             if (!new_sentences) {
                 return -12;
             }
@@ -164,7 +164,7 @@ int command_3(char ***ptr_sentences, int *ptr_count_sentences) {
     }
 
     int new_count = count_sentences - count_del;
-    char **new_sentences = malloc(sizeof(char **) * new_count);
+    char **new_sentences = malloc(sizeof(char *) * new_count);
     if (!new_sentences) {
         return -12;
     }

@@ -29,13 +29,15 @@ int main() {
         free(text);
         return 0;
     }
+
     int count_sentences_original = count_sentences;
-    char **sentences_original = get_sentences(text, count_sentences);
+    char **sentences_original = get_sentences(text, count_sentences_original);
     if (!sentences_original) {
         puts("Error: out of memory");
         free(text);
         return 0;
     }
+
     char **sentences = avoid_space(sentences_original, count_sentences);
     if (!sentences) {
         puts("Error: out of memory");
