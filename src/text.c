@@ -10,23 +10,15 @@ char *strdupl(char *str) {
     return result;
 }
 
-char **avoid_space(char **sentences_original, int count_sentences) {
-    char **sentences = malloc(sizeof(char *) * count_sentences);
-    if (!sentences) {
-        return NULL;
-    }
-    for (int i = 0; i < count_sentences; i++) {
-        char *str = sentences_original[i];
-        int j = 0;
-        for (; str[j]; j++) {
-            if (str[j] != ' ' && str[j] != '\n' && str[j] != '\t') {
-                break;
-            }
+char *avoid_space(char *str) {
+    int i = 0;
+    for (; str[i]; i++) {
+        char ch = str[i];
+        if (ch != ' ' && ch != '\n' && ch != '\t') {
+            break;
         }
-        sentences[i] = str + j;
     }
-
-    return sentences;
+    return str + i;
 }
 
 char *resize_capacity(char *ptr, size_t *capacity) {
@@ -94,7 +86,7 @@ char **get_sentences(char *text, int count_sentences) {
         if (c == '.') {
             buf[i_buf++] = c;
             buf[i_buf] = '\0';
-            char *sentence = strdupl(buf);
+            char *sentence = strdupl(avoid_space(buf));
             if (!sentence) {
                 return NULL;
             }

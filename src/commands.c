@@ -265,8 +265,8 @@ void free_memory_strings(char **sentences, int count_sentence) {
     free(sentences);
 }
 
-void free_memory_all(char *text, char **sentences_original, int count_sentences_original, char **sentences) {
+void free_memory_all(char *text, char **sentences, int count_sentences) {
     free(text);
-    free_memory_strings(sentences_original, count_sentences_original);
+    free_memory_strings(sentences, count_sentences);
     free(sentences);
 }
