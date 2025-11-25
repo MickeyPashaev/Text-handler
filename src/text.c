@@ -2,10 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include "text.h"
+#include "commands.h"
 
 char *strdupl(char *str) {
     size_t len = strlen(str);
     char *result = malloc(sizeof(char) * (len + 1));
+    if (!result) {
+        return NULL;
+    }
     strcpy(result, str);
     return result;
 }
@@ -74,8 +78,9 @@ char **get_sentences(char *text, int count_sentences) {
         return NULL;
     }
 
-    char *buf = malloc(sizeof(char) * strlen(text));
+    char *buf = malloc(sizeof(char) * (strlen(text) + 1));
     if (!buf) {
+        free(sentences);
         return NULL;
     }
 
@@ -88,6 +93,8 @@ char **get_sentences(char *text, int count_sentences) {
             buf[i_buf] = '\0';
             char *sentence = strdupl(avoid_space(buf));
             if (!sentence) {
+                free_memory_strings(sentences, i_sent);
+                free(buf);
                 return NULL;
             }
             sentences[i_sent++] = sentence;

@@ -37,12 +37,6 @@ int main() {
         return 0;
     }
 
-    if (!sentences) {
-        puts("Error: out of memory");
-        free(text);
-        return 0;
-    }
-
     switch (mode) {
         case 0: {
             if (command_0(&sentences, &count_sentences)) {

@@ -27,6 +27,7 @@ int command_0(char ***ptr_sentences, int *ptr_count_sentences) {
                 continue;
             }
             if (!strcmp_nocase(sentences[i], sentences[j])) {
+                free(sentences[j]);
                 sentences[j] = NULL;
             }
         }
@@ -156,6 +157,7 @@ int command_3(char ***ptr_sentences, int *ptr_count_sentences) {
         for (int j = 0; j < size_sent; j++) {
             char c = cur_sent[j];
             if (c == ',') {
+                free(sentences[i]);
                 sentences[i] = NULL;
                 count_del++;
                 break;
@@ -268,5 +270,4 @@ void free_memory_strings(char **sentences, int count_sentence) {
 void free_memory_all(char *text, char **sentences, int count_sentences) {
     free(text);
     free_memory_strings(sentences, count_sentences);
-    free(sentences);
 }
