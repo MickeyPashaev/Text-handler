@@ -112,3 +112,24 @@ void print_sentences(char **sentences, int count_sentences) {
         printf("%s\n", sentences[i]);
     }
 }
+
+
+int get_start_data(char **text, int *count_sentences, char ***sentences) {
+    *text = get_text();
+    if (!(*text)) {
+        return -1;
+    }
+
+    *count_sentences = get_count_sentences(*text);
+    if (*count_sentences == 0) {
+        free(*text);
+        return -1;
+    }
+
+    *sentences = get_sentences(*text, *count_sentences);
+    if (!(*sentences)) {
+        free(*text);
+        return -1;
+    }
+    return 0;
+}

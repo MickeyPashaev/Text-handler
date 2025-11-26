@@ -12,33 +12,17 @@ int main() {
         puts("Error: wrong mode number. Write number 0-5.");
         return 0;
     }
-    if (mode == 5) {
-        command_5();
-        return 0;
-    }
 
-    char *text = get_text();
-    if (!text) {
-        puts("Error: out of memory");
-        return 0;
-    }
-
-    int count_sentences = get_count_sentences(text);
-    if (count_sentences == 0) {
-        puts("Error: text is empty or wrong");
-        free(text);
-        return 0;
-    }
-
-    char **sentences = get_sentences(text, count_sentences);
-    if (!sentences) {
-        puts("Error: out of memory");
-        free(text);
-        return 0;
-    }
+    char *text = NULL;
+    int count_sentences = 0;
+    char **sentences = NULL;
 
     switch (mode) {
         case 0: {
+            if (get_start_data(&text, &count_sentences, &sentences)) {
+                puts("Error: out of memory or wrong text");
+                return 0;
+            }
             if (command_0(&sentences, &count_sentences)) {
                 puts("Error: out of memory");
                 free_memory_all(text, sentences, count_sentences);
@@ -48,6 +32,10 @@ int main() {
             break;
         }
         case 1: {
+            if (get_start_data(&text, &count_sentences, &sentences)) {
+                puts("Error: out of memory or wrong text");
+                return 0;
+            }
             if (command_0(&sentences, &count_sentences)) {
                 puts("Error: out of memory");
                 free_memory_all(text, sentences, count_sentences);
@@ -61,6 +49,10 @@ int main() {
             break;
         }
         case 2: {
+            if (get_start_data(&text, &count_sentences, &sentences)) {
+                puts("Error: out of memory or wrong text");
+                return 0;
+            }
             if (command_0(&sentences, &count_sentences)) {
                 puts("Error: out of memory");
                 free_memory_all(text, sentences, count_sentences);
@@ -71,6 +63,10 @@ int main() {
             break;
         }
         case 3: {
+            if (get_start_data(&text, &count_sentences, &sentences)) {
+                puts("Error: out of memory or wrong text");
+                return 0;
+            }
             if (command_0(&sentences, &count_sentences)) {
                 puts("Error: out of memory");
                 free_memory_all(text, sentences, count_sentences);
@@ -85,6 +81,10 @@ int main() {
             break;
         }
         case 4: {
+            if (get_start_data(&text, &count_sentences, &sentences)) {
+                puts("Error: out of memory or wrong text");
+                return 0;
+            }
             if (command_0(&sentences, &count_sentences)) {
                 puts("Error: out of memory");
                 free_memory_all(text, sentences, count_sentences);
@@ -97,6 +97,13 @@ int main() {
             }
 			print_sentences(sentences, count_sentences);
             break;
+        }
+        case 5: {
+            command_5();
+            return 0;
+        }
+        default: {
+            puts("Error: no command which you write. Write: 0-5");
         }
     }
 
