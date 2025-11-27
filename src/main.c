@@ -12,6 +12,8 @@ int main() {
         puts("Error: wrong mode number. Write number 0-5.");
         return 0;
     }
+    char ch;
+    while ((ch = getchar()) != '\n') {}
 
     char *text = NULL;
     int count_sentences = 0;
