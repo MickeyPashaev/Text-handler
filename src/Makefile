@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-fno-common -std=c11 -g -Wall -Werror -fsanitize=address -lpng -lm
+CFLAGS=-fno-common -std=c11 -g -Wall -Werror -fsanitize=address
 
 all: main.o text.o commands.o
 	$(CC) $(CFLAGS) main.o text.o commands.c -o cw
