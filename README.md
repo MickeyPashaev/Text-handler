@@ -1,13 +1,10 @@
 # Text Processing Program
 
-**Course Work – Option 4.6**
+**Course Work**
 
 ## Description
 
 This console program reads text from `stdin`, performs one selected operation, prints the result to `stdout`, and terminates.
-At startup, the program must print:
-`Course work for option <V>, created by <Name> <Surname>.`
-After printing this line, the program waits for a command number.
 
 ---
 ## Commands
